@@ -161,7 +161,10 @@ We get the total for every day. The NA elements are removed.
 ```{r}
 agDay <- aggregate(data$steps, by=list(data$date), FUN=sum, na.rm=TRUE)
 names(agDay) <- c("date", "steps")
-hist(agDay$steps, breaks = 12, xlab = "Steps", main = "Total steps by Day", )
+
+ggplot(agDay, aes(steps)) + geom_histogram(bins = 12, colour="green3", fill="lightgreen") + labs(title = "Total number of steps taken each day", x= "Steps", y="Counts")
+
+# hist(agDay$steps, breaks = 12, xlab = "Steps", main = "Total steps by Day", )
 ```
 
 
